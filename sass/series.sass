@@ -1,0 +1,130 @@
+@import overview
+
+// - - - HEADER - - - //
+.series-back-link
+
+	img
+		transform: scale(1.1)
+		margin: 0 5px 1px 0
+
+.series-desc-wrapper
+	display: flex
+	flex-direction: column
+	align-items: flex-end
+
+	div
+		text-align: right
+		margin-bottom: 28px
+
+		h1
+			margin-top: 0
+
+#header-wrapper
+	height: 50%
+	align-items: flex-start
+	padding-top: 100px
+
+#header
+	align-items: flex-start
+
+// - - - SERIES - - - //
+.content-wrapper
+	@extend .flex-center
+
+.inner-series-wrapper
+	width: 80%
+
+.image-wrapper
+	display: flex
+	margin-bottom: 135px
+	position: relative
+
+.image
+	margin-right: 36px
+
+	img
+		transition: box-shadow 1s ease
+
+		&:hover
+			box-shadow: 20px 0 44px 0 rgba(0,0,0,0.08)
+
+	div
+		display: flex
+		justify-content: space-between
+		margin-top: 15px
+
+		span
+			color: $text-grey
+
+		h3
+			font-weight: normal
+
+.meta-wrapper
+	z-index: -1
+	opacity: 0
+
+.meta
+	display: flex
+	flex-direction: column
+	margin-bottom: 23px
+
+.meta-type
+	font-size: 12px
+	color: $text-grey
+	margin-bottom: 5px
+
+// - - - CALL TO ACTION - - - //
+.cta-wrapper
+	width: 100%
+	display: flex
+	justify-content: center
+	margin-bottom: 85px
+
+.cta
+	display: flex
+	width: 80%
+	justify-content: space-between
+
+	img
+		margin: 0 4px 2px 0
+
+.next-prev-wrapper
+	display: flex
+
+.next
+	margin-left: 80px
+	position: relative
+
+	img
+		transform: rotate(180deg)
+		margin: 0 0 1px 3px
+
+	&:before
+		content: ""
+		display: block
+		height: 1px
+		width: 23px
+		background-color: $text-black
+		position: absolute
+		top: 50%
+		left: -52px
+
+// - - - POSITIONING THE IMAGES 'RANDOMLY' - - - //
+#landscapes-cover-wrapper
+	display: flex
+	justify-content: flex-start
+
+#landscape-1-wrapper
+	display: flex
+	justify-content: flex-end
+
+#landscape-2-wrapper
+	display: flex
+	align-items: flex-start
+	padding-left: 30px
+
+#landscape-3-wrapper
+	display: flex
+	align-items: start
+	justify-content: flex-end
+	padding-right: 20px

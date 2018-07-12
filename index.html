@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Portfolio.</title>
+	<!-- LINKING STYLEHSEET -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css">
+	<link rel="stylesheet" href="/css/overview.css">
+	<link rel="stylesheet" href="/css/about.css">
+</head>
+<body>
+	<div class="about-page">
+		<h1 id="about-title">About.</h1>
+
+		<div>
+			<p>
+				My name is Elias and I created this portfolio
+				during an internship at Atelier Disko in Hamburg.
+				The idea was to build a something to showcase my
+				photographs in a very focused and distraction-free
+				manner. Thanks to their great guidance I learned a
+				ton of new things along the way about the conceptual
+				and technical work that goes into such a project.
+				I had a lot of fun and hopefully you enjoy my the results.
+				If you have any questions feel free to ask.
+			</p>
+			<a href="mailto:elias.ghorwall@gmx.de">Contact me.</a>
+		</div>
+	</div>
+
+	<div class="overview-page">
+		<div id="header-wrapper">
+			<div id="header">
+				<a href="#" class="link" id="about-link">About.</a>
+
+				<a href="#" class="link" id="settings-link">
+				   <div class="bubble">
+				      <div id="white" class="option selected-option"></div>
+				      <div id="grey" class="option"></div>
+				      <div id="black" class="option"></div>
+				   </div>
+
+				   Settings.
+				</a>
+			</div>
+		</div>
+
+		<div class="about-back" id="about-back-btn">
+			<img src="/img/icons/arrow.png" alt="Arrow Icon">
+			Back
+		</div>
+
+		<div id="content-wrapper">
+			<div id="series-overview">
+				<a href='/series/series-1.html' class="series-wrapper">
+					<img src="/img/series/series-1/landscape-cover.png " alt="Series 1 - Cover">
+					<div>
+						<h1 class="series-title">Breathtaking landscapes.</h1>
+						<span class="series-meta">270318 — Canada</span>
+					</div>
+					<p class="series-desc">
+						This earth is gorgeous, but I feel we sometimes tend
+						to forget that. I created this series to remind us of
+						and showcase the incredible landscapes Canada has to offer.
+						I was able to spend three weeks there during March of
+						this year. Specifiaclly, I visited Nova Scotia. Have fun.
+					</p>
+				</a>
+
+				<a href='/series/series-2.html' class="series-wrapper">
+					<img src="/img/series/series-2/mist-cover.png" alt="Series 2 - Cover">
+					<div>
+						<h1 class="series-title">Under the mist.</h1>
+						<span class="series-meta">130901 — Hamburg</span>
+					</div>
+					<p class="series-desc">
+						It doesn’t happen very often, but when it does I always feel the need
+						to go out and shoot. This is a collection of misty pictures I captured
+						during the time. I don’t know about you, but I think mist has something
+						very mysterious to it and it can transforms places completely. It’s magic.
+					</p>
+				</a>
+
+				<a href='/series/series-3.html' class="series-wrapper">
+					<img src="/img/series/series-3/street-cover.png" alt="Series 3 - Cover" class="last-cover">
+					<div class="last-cover">
+						<h1 class="series-title">Hongkong at night.</h1>
+						<span class="series-meta">220515 — Hongkong</span>
+					</div>
+					<p class="series-desc last-cover">
+						I travelled to Bangkok this year and the most fascinating thing
+						in there, for me at least, were the nights. All the little shops,
+						the lights and signs make this a wonderful place to take stunning
+						photographs in. Enjoy.
+					</p>
+				</a>
+			</div>
+		</div>
+	</div>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.2.0/anime.min.js"></script>
+	<script src="/js/animation.js"></script>
+	<script src="/js/main.js"></script>
+</body>
+</html>

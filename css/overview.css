@@ -1,0 +1,126 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Futura";
+  letter-spacing: 1px;
+  color: #494949;
+  font-size: 15px; }
+
+body {
+  height: 100vh;
+  width: 100vw; }
+
+.flex-center, #header-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+
+.overview-page {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; }
+
+.black-bg {
+  background-color: #191919; }
+
+.white-bg {
+  background-color: #FFFFFF; }
+
+.grey-bg {
+  background-color: #828282; }
+
+#header-wrapper {
+  height: 20%; }
+
+#header {
+  display: flex;
+  justify-content: space-between;
+  width: 85%;
+  align-items: center; }
+
+.link {
+  text-decoration: none; }
+
+#settings-link {
+  display: flex;
+  align-items: center; }
+
+.bubble {
+  height: 37px;
+  width: 105px;
+  background: #F6F6F6;
+  border-radius: 50px;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 15px;
+  margin: 0 20px 0 0;
+  opacity: 0; }
+  .bubble:after {
+    content: "";
+    display: block;
+    height: 10px;
+    width: 10px;
+    background: #F6F6F6;
+    position: absolute;
+    right: -4px;
+    top: 14px;
+    transform: rotate(45deg); }
+  .bubble div {
+    height: 16px;
+    width: 16px;
+    border-radius: 50px;
+    transition: all .5s ease; }
+    .bubble div:first-child {
+      background: #FFFFFF; }
+    .bubble div:nth-child(2) {
+      background: #191919; }
+    .bubble div:nth-child(3) {
+      background: #828282; }
+
+.show-popup {
+  opacity: 1; }
+
+.selected-bg {
+  box-shadow: inset 0px 0px 0px 3px #C9C9C9; }
+
+#content-wrapper {
+  height: 80%; }
+
+#series-overview {
+  display: flex;
+  width: 100vw;
+  overflow: scroll;
+  padding-left: 7.55%; }
+
+.series-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 747px;
+  margin-right: 116px;
+  padding-bottom: 25px; }
+  .series-wrapper div {
+    display: flex;
+    flex-direction: column;
+    align-items: center; }
+  .series-wrapper img {
+    height: 460px; }
+
+.series-title {
+  font-weight: bold;
+  font-size: 15px; }
+
+.series-meta {
+  color: #A0A0A0; }
+
+.series-desc {
+  max-width: 425px;
+  text-align: justify;
+  color: #A0A0A0;
+  line-height: 24px; }
