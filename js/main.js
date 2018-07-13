@@ -37,8 +37,10 @@ document.addEventListener('DOMContentLoaded', function() {
 	let grey = document.getElementById('grey');
 	let black = document.getElementById('black');
 	let page = document.querySelector('.overview-page');
+	let changingText = document.querySelectorAll('.series-title, .link, .about-page div p, .about-page div a');
+	let aboutPage = document.querySelector('.about-page')
 
-	function handleOption(currentOption, otherOptions, bgClass) {
+	function handleOption(currentOption, otherOptions, bgColor, textColor, bubbleBg, aboutBg, aboutHeadline) {
 		// Highlight current option
 		currentOption.classList.add('selected-option');
 
@@ -47,22 +49,40 @@ document.addEventListener('DOMContentLoaded', function() {
 			option.classList.remove('selected-option');
 		})
 
-		// Change page background
+		// Change color and background of elements
 		page.classList.remove('white-bg', 'grey-bg', 'black-bg');
-		page.classList.add(`${bgClass}`);
+		page.classList.add(`${bgColor}`);
+
+		// Adjust text colors
+		changingText.forEach(function(text) {
+			text.classList.remove('white-text')
+			text.classList.add(`${textColor}`);
+		})
+
+		// Adjust popup background
+		bubble.classList.remove('black-bubble', 'grey-bubble', 'white-bubble');
+		bubble.classList.add(`${bubbleBg}`)
+
+		//Adjust about-page background
+		aboutPage.classList.remove('black-about-page', 'grey-about-page', 'white-about-page');
+		aboutPage.classList.add(`${aboutBg}`);
+
+		// Adjust about-headline background
+		bubble.classList.remove('black-bubble', 'grey-bubble', 'white-bubble');
+		bubble.classList.add(`${bubbleBg}`)
 	};
 
 	if (white, grey, black) {
 		white.addEventListener('click', function() {
-			handleOption(white, [grey, black], 'white-bg');
+			handleOption(white, [grey, black], 'white-bg',  'black-text', 'white-bubble', 'black-about-page');
 		});
 
 		grey.addEventListener('click', function() {
-			handleOption(grey , [white, black], 'black-bg');
+			handleOption(grey , [white, black], 'black-bg', 'white-text', 'black-bubble', 'black-about-page');
 		});
 
 		black.addEventListener('click', function() {
-			handleOption(black, [white, grey], 'grey-bg');
+			handleOption(black, [white, grey], 'grey-bg', 'white-text', 'grey-bubble', 'black-about-page');
 		});
 	}
 

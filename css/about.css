@@ -29,7 +29,8 @@ body {
   transition: background-color 1s ease; }
 
 .black-bg {
-  background-color: #191919; }
+  background-color: #191919;
+  box-shadow: -21px -21px 40px 0 black; }
 
 .white-bg {
   background-color: #FFFFFF; }
@@ -47,7 +48,8 @@ body {
   align-items: center; }
 
 .link {
-  text-decoration: none; }
+  text-decoration: none;
+  transition: color 1s ease; }
 
 #settings-link {
   display: flex;
@@ -64,7 +66,8 @@ body {
   align-items: center;
   padding: 0 15px;
   margin: 0 20px 0 0;
-  opacity: 0; }
+  opacity: 0;
+  transition: background-color 1s ease; }
   .bubble:after {
     content: "";
     display: block;
@@ -74,7 +77,8 @@ body {
     position: absolute;
     right: -4px;
     top: 14px;
-    transform: rotate(45deg); }
+    transform: rotate(45deg);
+    transition: background-color 1s ease; }
   .bubble div {
     height: 16px;
     width: 16px;
@@ -114,7 +118,8 @@ body {
 
 .series-title {
   font-weight: bold;
-  font-size: 15px; }
+  font-size: 15px;
+  transition: color 1s ease; }
 
 .series-meta {
   color: #A0A0A0; }
@@ -136,6 +141,22 @@ body {
 
 .darken-covers {
   filter: contrast(0.9) grayscale(0.5); }
+
+.white-text {
+  color: #FFFFFF; }
+
+.black-bubble {
+  background-color: #313131; }
+  .black-bubble:after {
+    background-color: #313131; }
+
+.grey-bubble {
+  background-color: #8E8E8E; }
+  .grey-bubble:after {
+    background-color: #8E8E8E; }
+
+.black-about-page {
+  background-color: #191919; }
 
 body {
   overflow: hidden; }
