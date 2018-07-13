@@ -30,13 +30,14 @@ body {
 
 .black-bg {
   background-color: #191919;
-  box-shadow: -21px -21px 40px 0 black; }
+    background-color-box-shadow: -21px -21px 40px 0 rgba(0, 0, 0, 0.4); }
 
 .white-bg {
   background-color: #FFFFFF; }
 
 .grey-bg {
-  background-color: #828282; }
+  background-color: #828282;
+  box-shadow: -28px -28px 44px 0 rgba(0, 0, 0, 0.05); }
 
 #header-wrapper {
   height: 20%; }
@@ -158,6 +159,15 @@ body {
 .black-about-page {
   background-color: #191919; }
 
+.grey-about-page {
+  background-color: #828282; }
+
+.disable-interaction {
+  pointer-events: none; }
+
+.enable-interaction {
+  pointer-events: auto; }
+
 body {
   overflow: hidden; }
 
@@ -193,7 +203,7 @@ body {
         background-color: #494949;
         margin-right: 15px; }
 
-#about-title {
+.about-title {
   font-size: 260px;
   font-weight: normal;
   color: #F7F7F7;
@@ -205,7 +215,7 @@ body {
   z-index: 1; }
 
 .about-back {
-  background: #FFFFFF;
+  background-color: #FFFFFF;
   box-shadow: 0 14px 24px 0 rgba(0, 0, 0, 0.06);
   height: 50px;
   width: 105px;
@@ -214,6 +224,26 @@ body {
   left: -2.8%;
   cursor: pointer;
   opacity: 0; }
-  .about-back img {
-    transform: scale(1.1);
-    margin: 0 10px 0 0; }
+  .about-back span {
+    font-size: 17px;
+    margin: 0 10px 5px 0; }
+
+.black-about-title {
+  color: #242424; }
+
+.grey-about-title {
+  color: #888888; }
+
+.black-about-back {
+  background-color: #1E1E1E;
+  box-shadow: 0 14px 24px 0 rgba(0, 0, 0, 0.67);
+  color: #FFFFFF; }
+  .black-about-back span {
+    color: #FFFFFF; }
+
+.grey-about-back {
+  background-color: #828282;
+  box-shadow: 0 14px 24px 0 rgba(0, 0, 0, 0.08);
+  color: #FFFFFF; }
+  .grey-about-back span {
+    color: #FFFFFF; }

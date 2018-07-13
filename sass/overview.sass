@@ -34,19 +34,20 @@ body
 	flex-direction: column
 	justify-content: space-between
 	background-color: $white-bg
-	box-shadow: -21px -21px 40px 0 rgba(0,0,0,0.04)
+	box-shadow: -21px -21px 40px 0 rgba(#000, 0.04)
 	position: relative
 	transition: background-color 1s ease
 
 .black-bg
 	background-color: $black-bg
-	box-shadow: -21px -21px 40px 0 rgba(0,0,0,1)
+ 	box-shadow: -21px -21px 40px 0 rgba(#000, 0.4)
 
 .white-bg
 	background-color: $white-bg
 
 .grey-bg
 	background-color: $grey-bg
+	box-shadow: -28px -28px 44px 0 rgba(#000, 0.05)
 
 // - - - HEADER - - - //
 #header-wrapper
@@ -181,3 +182,12 @@ body
 
 .black-about-page
 	background-color: $black-bg
+
+.grey-about-page
+	background-color: $grey-bg
+
+.disable-interaction
+	pointer-events: none
+
+.enable-interaction
+	pointer-events: auto

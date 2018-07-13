@@ -30,13 +30,14 @@ body {
 
 .black-bg {
   background-color: #191919;
-  box-shadow: -21px -21px 40px 0 black; }
+    background-color-box-shadow: -21px -21px 40px 0 rgba(0, 0, 0, 0.4); }
 
 .white-bg {
   background-color: #FFFFFF; }
 
 .grey-bg {
-  background-color: #828282; }
+  background-color: #828282;
+  box-shadow: -28px -28px 44px 0 rgba(0, 0, 0, 0.05); }
 
 #header-wrapper {
   height: 20%; }
@@ -157,3 +158,12 @@ body {
 
 .black-about-page {
   background-color: #191919; }
+
+.grey-about-page {
+  background-color: #828282; }
+
+.disable-interaction {
+  pointer-events: none; }
+
+.enable-interaction {
+  pointer-events: auto; }

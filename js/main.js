@@ -5,26 +5,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
 	function showPopup() {
 		bubble.classList.add('show-popup');
-
-		anime({
-			targets: '.bubble',
-			easing: 'easeOutExpo',
-			translateX: [10, 0],
-			opacity: [0, 1],
-			duration: 500,
-		})
+		animatePopupIn();
 	};
 
 	function hidePopup() {
 		bubble.classList.remove('show-popup');
-
-		anime({
-			targets: '.bubble',
-			easing: 'easeOutExpo',
-			translateX: [0, -10],
-			opacity: [1, 0],
-			duration: 500,
-		})
+		animatePopupOut();
 	};
 
 	if (settingsLink) {
@@ -32,15 +18,16 @@ document.addEventListener('DOMContentLoaded', function() {
 		settingsLink.addEventListener('mouseleave', hidePopup);
 	}
 
-	// Implement option selection and changing background
+	// Implement option selection and changing colors & backgrounds
 	let white = document.getElementById('white');
 	let grey = document.getElementById('grey');
 	let black = document.getElementById('black');
 	let page = document.querySelector('.overview-page');
 	let changingText = document.querySelectorAll('.series-title, .link, .about-page div p, .about-page div a');
-	let aboutPage = document.querySelector('.about-page')
+	let aboutPage = document.querySelector('.about-page');
+	let aboutTitle = document.querySelector('.about-title');
 
-	function handleOption(currentOption, otherOptions, bgColor, textColor, bubbleBg, aboutBg, aboutHeadline) {
+	function handleOption(currentOption, otherOptions, bgColor, textColor, bubbleBg, aboutBg, aboutHeadline, aboutBackColor) {
 		// Highlight current option
 		currentOption.classList.add('selected-option');
 
@@ -60,113 +47,64 @@ document.addEventListener('DOMContentLoaded', function() {
 		})
 
 		// Adjust popup background
-		bubble.classList.remove('black-bubble', 'grey-bubble', 'white-bubble');
+		bubble.classList.remove('black-bubble', 'grey-bubble');
 		bubble.classList.add(`${bubbleBg}`)
 
 		//Adjust about-page background
-		aboutPage.classList.remove('black-about-page', 'grey-about-page', 'white-about-page');
+		aboutPage.classList.remove('black-about-page', 'grey-about-page');
 		aboutPage.classList.add(`${aboutBg}`);
 
-		// Adjust about-headline background
-		bubble.classList.remove('black-bubble', 'grey-bubble', 'white-bubble');
-		bubble.classList.add(`${bubbleBg}`)
+		// Adjust about-title color
+		aboutTitle.classList.remove('black-about-title', 'grey-about-title')
+		aboutTitle.classList.add(`${aboutHeadline}`);
+
+		// Adjust aboutBackBtn color
+		aboutBackBtn.classList.remove('black-about-back-btn', 'grey-about-back-btn');
+		aboutBackBtn.classList.add(`${aboutBackColor}`);
 	};
 
 	if (white, grey, black) {
+		// Do we need all the parameters? -> white is default
 		white.addEventListener('click', function() {
-			handleOption(white, [grey, black], 'white-bg',  'black-text', 'white-bubble', 'black-about-page');
-		});
-
-		grey.addEventListener('click', function() {
-			handleOption(grey , [white, black], 'black-bg', 'white-text', 'black-bubble', 'black-about-page');
+			handleOption(white, [grey, black], 'white-bg',  'black-text', 'white-bubble', 'white-about-page', 'white-about-title');
 		});
 
 		black.addEventListener('click', function() {
-			handleOption(black, [white, grey], 'grey-bg', 'white-text', 'grey-bubble', 'black-about-page');
+			handleOption(black, [white, grey], 'black-bg', 'white-text', 'black-bubble', 'black-about-page', 'black-about-title', 'black-about-back');
+		});
+
+		grey.addEventListener('click', function() {
+			handleOption(grey , [white, black], 'grey-bg', 'white-text', 'grey-bubble', 'grey-about-page', 'grey-about-title', 'grey-about-back');
 		});
 	}
 
 	// - - - HIDE/SHOW ABOUT PAGE - - - //
 	let aboutLink = document.getElementById('about-link');
-	let aboutBackBtn = document.getElementById('about-back-btn');
+	let aboutBackBtn = document.querySelector('.about-back');
 	let seriesCovers = document.querySelectorAll('.series-wrapper img')
 
 	function showAbout() {
-		anime({
-			targets: page,
-			translateX: 360,
-			translateY: 175,
-			scale: 0.8,
-			easing: 'easeOutExpo',
-		})
-
-		// Show about-back button
-		anime({
-			targets: aboutBackBtn,
-			easing: 'easeOutExpo',
-			opacity: 1,
-			width: [0, 105],
-			delay: 600,
-			duration: 700,
-		})
-
-		anime({
-			targets: seriesCovers,
-			easing: 'easeOutExpo',
-			opacity: 0.7,
-		})
-
-		anime({
-			targets: aboutLink,
-			easing: 'easeOutExpo',
-			opacity: 0,
-			translateX: 100,
-		})
+		animateOverviewSmall(page, aboutBackBtn, seriesCovers, aboutLink);
 
 		seriesCovers.forEach(function(cover) {
 			cover.classList.add('darken-covers');
 		})
+
+		page.classList.add('disable-interaction');
+		aboutBackBtn.classList.add('enable-interaction');
 	}
 
 	function hideAbout() {
-		anime({
-			targets: page,
-			translateX: 0,
-			translateY: 0,
-			scale: 1,
-			easing: 'easeOutExpo',
-			delay: 400,
-		})
-
-		anime({
-			targets: seriesCovers,
-			easing: 'easeOutExpo',
-			opacity: 1,
-			duration: 2000,
-			delay: 600,
-		})
-
-		anime({
-			targets: aboutLink,
-			easing: 'easeOutExpo',
-			opacity: 1,
-			translateX: 0,
-		})
-
-		// Hide about-back button
-		anime({
-			targets: aboutBackBtn,
-			opacity: 0,
-			duration: 500,
-			width: 0,
-			easing: 'easeOutExpo',
-		})
+		animateOverviewLarge(page, aboutBackBtn, seriesCovers, aboutLink);
 
 		setTimeout(function () {
 			seriesCovers.forEach(function(cover) {
 				cover.classList.remove('darken-covers');
 			})
 		}, 800);
+
+		page.classList.remove('disable-interaction');
+		aboutBackBtn.classList.remove('enable-interaction');
 	}
 
 	if (aboutLink, aboutBackBtn) {
@@ -175,58 +113,15 @@ document.addEventListener('DOMContentLoaded', function() {
 	}
 
 	// - - - INITIAL PAGE LOAD ANIMATION - - - //
-	anime({
-		targets: aboutLink,
-		translateX: [-500, 0],
-		easing: 'easeOutExpo',
-		delay: 300,
-	})
-
-	anime({
-		targets: settingsLink,
-		translateX: [500, 0],
-		easing: 'easeOutExpo',
-		delay: 300,
-	})
-
-	anime({
-		targets: '.series-wrapper img, .series-wrapper div, .series-wrapper p',
-		translateY: [-150, 0],
-		opacity: [0,1],
-		easing: 'easeOutExpo',
-		delay: function(el, i, l) {
-			return 1000 + 100 * i
-		},
-		duration: 1200,
-	})
+	overviewLoadAnimation(aboutLink, settingsLink);
 
 	//- - - SHOW METADATA ON HOVER - - - //
 	let images = document.querySelectorAll('.image img');
-	let meta = document.querySelectorAll('.meta-wrapper')
-
-	function showMeta() {
-		anime({
-			targets: meta,
-			translateX: [-176, 0],
-			opacity: 1,
-			easing: 'easeOutExpo',
-		})
-	}
-
-	function hideMeta() {
-		anime({
-			targets: meta,
-			translateX: -176,
-			delay: 500,
-			opacity: 0,
-			easing: 'easeOutExpo',
-		})
-	}
 
 	if (images) {
 		images.forEach(function(image) {
-			image.addEventListener('mouseenter', showMeta);
-			image.addEventListener('mouseleave', hideMeta);
+			image.addEventListener('mouseenter', showMetaAnimation);
+			image.addEventListener('mouseleave', hideMetaAnimation);
 		})
 	}
 });
