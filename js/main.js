@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	let aboutPage = document.querySelector('.about-page');
 	let aboutTitle = document.querySelector('.about-title');
 
-	function handleOption(currentOption, otherOptions, bgColor, textColor, bubbleBg, aboutBg, aboutHeadline, aboutBackColor) {
+	function handleOption(currentOption, otherOptions, bgColor, textColor, bubbleBg, aboutHeadline, aboutBackColor) {
 		// Highlight current option
 		currentOption.classList.add('selected-option');
 
@@ -51,30 +51,34 @@ document.addEventListener('DOMContentLoaded', function() {
 		bubble.classList.add(`${bubbleBg}`)
 
 		//Adjust about-page background
-		aboutPage.classList.remove('black-about-page', 'grey-about-page');
-		aboutPage.classList.add(`${aboutBg}`);
+		aboutPage.classList.remove('black-bg', 'grey-bg');
+		aboutPage.classList.add(`${bgColor}`);
 
 		// Adjust about-title color
 		aboutTitle.classList.remove('black-about-title', 'grey-about-title')
 		aboutTitle.classList.add(`${aboutHeadline}`);
 
 		// Adjust aboutBackBtn color
-		aboutBackBtn.classList.remove('black-about-back-btn', 'grey-about-back-btn');
+		aboutBackBtn.classList.remove('black-about-back', 'grey-about-back');
+		aboutBackBtn.classList.add(`${aboutBackColor}`);
+
+		// Adjust selectedOption border-color
+		aboutBackBtn.classList.remove('black-about-back', 'grey-about-back');
 		aboutBackBtn.classList.add(`${aboutBackColor}`);
 	};
 
 	if (white, grey, black) {
 		// Do we need all the parameters? -> white is default
 		white.addEventListener('click', function() {
-			handleOption(white, [grey, black], 'white-bg',  'black-text', 'white-bubble', 'white-about-page', 'white-about-title');
+			handleOption(white, [grey, black], 'white-bg',  'black-text', 'white-bubble', 'white-about-title');
 		});
 
 		black.addEventListener('click', function() {
-			handleOption(black, [white, grey], 'black-bg', 'white-text', 'black-bubble', 'black-about-page', 'black-about-title', 'black-about-back');
+			handleOption(black, [white, grey], 'black-bg', 'white-text', 'black-bubble', 'black-about-title', 'black-about-back');
 		});
 
 		grey.addEventListener('click', function() {
-			handleOption(grey , [white, black], 'grey-bg', 'white-text', 'grey-bubble', 'grey-about-page', 'grey-about-title', 'grey-about-back');
+			handleOption(grey , [white, black], 'grey-bg', 'white-text', 'grey-bubble', 'grey-about-title', 'grey-about-back');
 		});
 	}
 
@@ -116,12 +120,19 @@ document.addEventListener('DOMContentLoaded', function() {
 	overviewLoadAnimation(aboutLink, settingsLink);
 
 	//- - - SHOW METADATA ON HOVER - - - //
-	let images = document.querySelectorAll('.image img');
+	let items = document.querySelectorAll('.image-wrapper');
 
-	if (images) {
-		images.forEach(function(image) {
-			image.addEventListener('mouseenter', showMetaAnimation);
-			image.addEventListener('mouseleave', hideMetaAnimation);
+	if (items) {
+		items.forEach(function(item) {
+			let image = item.querySelector('img');
+
+			image.addEventListener('mouseenter', (event) => {
+				showMetaAnimation(event, item, image);
+			});
+
+			image.addEventListener('mouseleave', (event) => {
+				hideMetaAnimation(event, item, image);
+			});
 		})
 	}
 });

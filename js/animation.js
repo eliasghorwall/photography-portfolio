@@ -114,10 +114,13 @@ function overviewLoadAnimation(aboutLink, settingsLink) {
 	})
 }
 
-function showMetaAnimation() {
+function showMetaAnimation(event, item, image) {
+
+	let metaTarget = item.querySelectorAll('.meta');
+
 	anime({
-		targets: '.meta',
-		translateX: [-176, 0],
+		targets: metaTarget,
+		translateX: 200,
 		opacity: 1,
 		easing: 'easeOutExpo',
 		delay: function(el, i, l) {
@@ -127,10 +130,13 @@ function showMetaAnimation() {
 	})
 }
 
-function hideMetaAnimation() {
+function hideMetaAnimation(event, item, image) {
+
+	let metaTarget = item.querySelectorAll('.meta');
+
 	anime({
-		targets: '.meta',
-		translateX: -176,
+		targets: metaTarget,
+		translateX: 0,
 		opacity: 0,
 		easing: 'easeOutExpo',
 		delay: function(el, i, l) {

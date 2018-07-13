@@ -156,12 +156,6 @@ body {
   .grey-bubble:after {
     background-color: #8E8E8E; }
 
-.black-about-page {
-  background-color: #191919; }
-
-.grey-about-page {
-  background-color: #828282; }
-
 .disable-interaction {
   pointer-events: none; }
 
@@ -219,7 +213,8 @@ body {
   display: flex;
   flex-direction: column;
   margin-bottom: 23px;
-  opacity: 0; }
+  opacity: 0;
+  margin-left: -200px; }
 
 .meta-type {
   font-size: 12px;
