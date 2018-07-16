@@ -9,6 +9,11 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css">
 	<link rel="stylesheet" href="/css/overview.css">
 	<link rel="stylesheet" href="/css/about.css">
+	<!-- JAVASCRIPT -->
+	<script defer src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.2.0/anime.min.js"></script>
+	<script defer src="/js/turbolinks.js"></script>
+	<script defer src="/js/animation.js"></script>
+	<script defer src="/js/main.js"></script>
 </head>
 <body>
 	<div class="about-page">
@@ -31,11 +36,11 @@
 	</div>
 
 	<div class="overview-page">
-		<div id="header-wrapper">
+		<div id="overview-header-wrapper">
 			<div id="header">
-				<a href="#" class="link" id="about-link">About.</a>
+				<a href="#" class="link" id="about-link" data-turbolinks="false">About.</a>
 
-				<a href="#" class="link" id="settings-link">
+				<a href="#" class="link" id="settings-link" data-turbolinks="false">
 				   <div class="bubble">
 				      <div id="white" class="option selected-option"></div>
 				      <div id="black" class="option"></div>
@@ -96,9 +101,5 @@
 			</div>
 		</div>
 	</div>
-
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.2.0/anime.min.js"></script>
-	<script src="/js/animation.js"></script>
-	<script src="/js/main.js"></script>
 </body>
 </html>

@@ -114,9 +114,39 @@ function overviewLoadAnimation(aboutLink, settingsLink) {
 	})
 }
 
-function showMetaAnimation(event, item, image) {
+function seriesLoadAnimation() {
+	anime({
+		targets: ['.series-title', '.series-meta' ,'.series-desc'],
+		translateX: [40, 0],
+		opacity: [0,1],
+		easing: 'easeOutExpo',
+		delay: function(el, i) {
+			return 200 * i
+		},
+	})
 
-	let metaTarget = item.querySelectorAll('.meta');
+	anime({
+		targets: '.series-back-link',
+		translateX: [-40, 0],
+		opacity: [0,1],
+		easing: 'easeOutExpo',
+	})
+
+	anime({
+		targets: '.image',
+		translateY: [-50, 0],
+		opacity: [0, 1],
+		easing: 'easeOutExpo',
+		duration: 2000,
+		delay: function(el, i) {
+			return 1000 * i
+		},
+	})
+}
+
+function showMetaAnimation(imageWrapper, image) {
+
+	let metaTarget = imageWrapper.querySelectorAll('.meta');
 
 	anime({
 		targets: metaTarget,
@@ -130,9 +160,9 @@ function showMetaAnimation(event, item, image) {
 	})
 }
 
-function hideMetaAnimation(event, item, image) {
+function hideMetaAnimation(imageWrapper, image) {
 
-	let metaTarget = item.querySelectorAll('.meta');
+	let metaTarget = imageWrapper.querySelectorAll('.meta');
 
 	anime({
 		targets: metaTarget,
@@ -144,3 +174,11 @@ function hideMetaAnimation(event, item, image) {
 		},
 	})
 }
+
+// function seriesLoadAnimation(header, content) {
+// 	anime({
+// 		targets: [header, content],
+// 		opacity: [0, 1],
+// 		duration: 3000,
+// 	})
+// }

@@ -223,6 +223,16 @@
 		"sC": 3,
 		"tS": 0
 		},
+	"\/js\/turbolinks.js": {
+		"ft": 64,
+		"ma": 0,
+		"mi": 1,
+		"oA": 0,
+		"oAP": "\/js\/turbolinks-min.js",
+		"oF": 0,
+		"sC": 3,
+		"tS": 0
+		},
 	"\/sass\/about.sass": {
 		"aP": 0,
 		"bl": 0,

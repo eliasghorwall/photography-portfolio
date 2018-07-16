@@ -10,9 +10,10 @@
 
 body {
   height: 100vh;
-  width: 100vw; }
+  width: 100vw;
+  overflow: auto; }
 
-.flex-center, #header-wrapper, .content-wrapper {
+.flex-center, #overview-header-wrapper, #header-wrapper, .content-wrapper {
   display: flex;
   justify-content: center;
   align-items: center; }
@@ -30,7 +31,7 @@ body {
 
 .black-bg {
   background-color: #191919;
-    background-color-box-shadow: -21px -21px 40px 0 rgba(0, 0, 0, 0.4); }
+  box-shadow: -21px -21px 40px 0 rgba(0, 0, 0, 0.4); }
 
 .white-bg {
   background-color: #FFFFFF; }
@@ -39,7 +40,7 @@ body {
   background-color: #828282;
   box-shadow: -28px -28px 44px 0 rgba(0, 0, 0, 0.05); }
 
-#header-wrapper {
+#overview-header-wrapper {
   height: 20%; }
 
 #header {

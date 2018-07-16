@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('turbolinks:load', function() {
 	// - - - SETTINGS POPUP - - - //
 	let settingsLink = document.getElementById('settings-link');
 	let bubble = document.querySelector('.bubble');
@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', function() {
 		bubble.classList.add(`${bubbleBg}`)
 
 		//Adjust about-page background
-		aboutPage.classList.remove('black-bg', 'grey-bg');
+		aboutPage.classList.remove('black-bg', 'grey-bg', 'white-bg');
 		aboutPage.classList.add(`${bgColor}`);
 
 		// Adjust about-title color
@@ -116,23 +116,42 @@ document.addEventListener('DOMContentLoaded', function() {
 		aboutBackBtn.addEventListener('click', hideAbout);
 	}
 
-	// - - - INITIAL PAGE LOAD ANIMATION - - - //
+	// - - - INITIAL OVERVIEW AND SERIES LOAD ANIMATION - - - //
 	overviewLoadAnimation(aboutLink, settingsLink);
+	seriesLoadAnimation();
 
 	//- - - SHOW METADATA ON HOVER - - - //
-	let items = document.querySelectorAll('.image-wrapper');
+	let imageWrappers = document.querySelectorAll('.image-wrapper');
 
-	if (items) {
-		items.forEach(function(item) {
-			let image = item.querySelector('img');
+	if (imageWrappers) {
+		imageWrappers.forEach(function(imageWrapper) {
+				let image = imageWrapper.querySelector('img');
 
-			image.addEventListener('mouseenter', (event) => {
-				showMetaAnimation(event, item, image);
+			image.addEventListener('mouseenter', () => {
+				showMetaAnimation(imageWrapper, image);
 			});
 
-			image.addEventListener('mouseleave', (event) => {
-				hideMetaAnimation(event, item, image);
+			image.addEventListener('mouseleave', () => {
+				hideMetaAnimation(imageWrapper, image);
 			});
 		})
 	}
+
+	//- - - Turbolinks - - - //
+		// let header = document.querySelector('.header-wrapper');
+		// let content = document.querySelector('.content-wrapper');
+		//
+		// seriesLoadAnimation(header, content);
+	// let series = document.querySelectorAll('.series-wrapper')
+	//
+	// series.addEventListener('turbolinks:click', (event) => {
+	// 	let header = document.querySelector('.header-wrapper');
+	// 	let content = document.querySelector('.content-wrapper');
+	//
+	// 	anime({
+	// 		targets: [header, content],
+	// 		opacity: [0, 1],
+	// 		duration: 3000,
+	// 	})
+	// });
 });
