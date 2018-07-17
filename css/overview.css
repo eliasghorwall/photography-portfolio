@@ -42,6 +42,12 @@ body {
 
 #overview-header-wrapper {
   height: 20%; }
+  @media screen and (min-height: 1000px) {
+    #overview-header-wrapper {
+      height: 25%; } }
+  @media screen and (min-height: 1100px) {
+    #overview-header-wrapper {
+      height: 30%; } }
 
 #overview-header {
   display: flex;
@@ -95,11 +101,17 @@ body {
 
 #content-wrapper {
   height: 80%; }
+  @media screen and (min-height: 1000px) {
+    #content-wrapper {
+      height: 75%; } }
+  @media screen and (min-height: 1100px) {
+    #content-wrapper {
+      height: 70%; } }
 
 #series-overview {
   display: flex;
   width: 100vw;
-  overflow: scroll;
+  overflow-x: scroll;
   padding-left: 7.55%; }
 
 .series-wrapper {
@@ -141,6 +153,9 @@ body {
 .selected-option {
   box-shadow: inset 0px 0px 0px 3px #C9C9C9; }
 
+.selected-option-black {
+  box-shadow: inset 0px 0px 0px 3px red; }
+
 .darken-covers {
   filter: contrast(0.9) grayscale(0.5); }
 
@@ -162,3 +177,6 @@ body {
 
 .enable-interaction {
   pointer-events: auto; }
+
+.grey-desc-color {
+  color: red; }

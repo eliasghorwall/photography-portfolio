@@ -107,9 +107,7 @@ function overviewLoadAnimation(aboutLink, settingsLink) {
 		translateY: [-150, 0],
 		opacity: [0,1],
 		easing: 'easeOutExpo',
-		delay: function(el, i, l) {
-			return 1000 + 100 * i
-		},
+		delay: (el, i, l) => 1000 + 100 * i,
 		duration: 1200,
 	})
 }
@@ -120,15 +118,14 @@ function seriesLoadAnimation() {
 		translateX: [200, 0],
 		opacity: [0,1],
 		easing: 'easeOutExpo',
-		delay: function(el, i) {
-			return 600 + 200 * i
-		},
+		delay: (el, i) => 600 + 200 * i,
 	})
 
 	anime({
 		targets: '.series-back-link',
-		translateX: [-100, 0],
 		opacity: [0,1],
+		delay: 600,
+		duration: 2000,
 		easing: 'easeOutExpo',
 	})
 
@@ -137,9 +134,7 @@ function seriesLoadAnimation() {
 		translateX: [-500, 0],
 		opacity: [0,1],
 		easing: 'easeOutExpo',
-		delay: function(el, i) {
-			return 1200 + 1000 * i
-		},
+		delay: (el, i) =>  1200 + 1000 * i,
 	})
 }
 
@@ -152,9 +147,8 @@ function showMetaAnimation(imageWrapper, image) {
 		translateX: 200,
 		opacity: 1,
 		easing: 'easeOutExpo',
-		delay: function(el, i, l) {
-			return 25 * i
-		},
+		// FIXME: Use shorthand and implicit return delay: (el, i, l) => 25 * i,
+		delay: (el, i, l) => 25 * i,
 		duration: 950,
 	})
 }
@@ -168,9 +162,7 @@ function hideMetaAnimation(imageWrapper, image) {
 		translateX: 0,
 		opacity: 0,
 		easing: 'easeOutExpo',
-		delay: function(el, i, l) {
-			return 25 * i
-		},
+		delay: (el, i, l) => 25 * i,
 	})
 }
 
