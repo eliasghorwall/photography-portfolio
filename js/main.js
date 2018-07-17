@@ -48,14 +48,21 @@ document.addEventListener('turbolinks:load', function() {
 	let aboutTitle = $1('.about-title');
 	let descTexts = $('.series-meta, .series-desc')
 
-	// TODO: More descriptive name
 	function changeColorTheme(currentOption, otherOptions, bgColor, textColor, bubbleBg, aboutHeadline, aboutBackColor, greyDescColor) {
-		// Highlight current option
-		currentOption.classList.add('selected-option');
+		// Highlight current option with correct border color
+		if (currentOption === black) {
+			currentOption.classList.add('selected-option-black');
+		} else if (currentOption === grey) {
+			currentOption.classList.add('selected-option-grey');
+		} else {
+			currentOption.classList.add('selected-option-white');
+		}
 
 		// Deselect remaining two options
 		otherOptions.forEach(function(option) {
-			option.classList.remove('selected-option');
+			option.classList.remove('selected-option-white');
+			option.classList.remove('selected-option-grey');
+			option.classList.remove('selected-option-black');
 		})
 
 		// Change color and background of elements
@@ -96,8 +103,8 @@ document.addEventListener('turbolinks:load', function() {
 		// Adjust grey desc colors
 		console.log(page.className);
 
-		// FIXME: Always use strict comparison ===
-		if (page.className == 'overview-page grey-bg') {
+		// FIXME: Always use strict comparison =====
+		if (page.className === 'overview-page grey-bg') {
 			// FIXME: Use shorthand syntax
 			descTexts.forEach((descText) => {
 				descText.classList.add(greyDescColor);
@@ -143,11 +150,11 @@ document.addEventListener('turbolinks:load', function() {
 		let aboutPageClass = aboutPage.className;
 		console.log(aboutPageClass);
 
-		if (aboutPageClass == 'about-page white-bg') {
+		if (aboutPageClass === 'about-page white-bg') {
 			texts.forEach((text) => {
 				text.classList.add('white-darker-text')
 			})
-		} else if (aboutPageClass == 'about-page black-bg'){
+		} else if (aboutPageClass === 'about-page black-bg'){
 			texts.forEach((text) => {
 				text.classList.add('black-darker-text')
 			})
@@ -183,6 +190,9 @@ document.addEventListener('turbolinks:load', function() {
 	if (aboutLink, aboutBackBtn) {
 		aboutLink.addEventListener('click', showAboutPage);
 		aboutBackBtn.addEventListener('click', hideAboutPage);
+		aboutLink.addEventListener('mouseenter', () => {
+			aboutHover();
+		});
 	}
 
 	// - - - INITIAL OVERVIEW AND SERIES LOAD ANIMATION - - - //
@@ -250,5 +260,30 @@ document.addEventListener('turbolinks:load', function() {
 	// 	let about = html.querySelector('body')
 	//
 	// 	$1('.about-page').innerHTML = about;
+	// })
+
+	// //- - - Hover animations - - - //
+	// aboutLink.addEventListener('mouseenter', () => {
+	// 	hoverAnimation();
+	// })
+
+	// aboutLink.addEventListener('mouseleave', () => {
+	// 	anime.timeline({loop: false})
+	// 	 .add({
+	// 		 targets: '.letter',
+	// 		 translateX: [0,-30],
+	// 		 opacity: [1,0],
+	// 		 easing: "easeInExpo",
+	// 		 duration: 1100,
+	// 		 delay: (el, i) => 30 * i,
+	// 	 })
+	// 	 .add({
+	// 		 targets: '.letter',
+	// 		 translateX: [40,0],
+	// 		 opacity: [0,1],
+	// 		 easing: "easeOutExpo",
+	// 		 duration: 1100,
+	// 		 delay: (el, i) => 30 * i,
+	// 	 })
 	// })
 });

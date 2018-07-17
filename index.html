@@ -11,7 +11,7 @@
 	<!-- JAVASCRIPT -->
 	<script defer src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.2.0/anime.min.js"></script>
 	<script defer src="/js/turbolinks.js"></script>
-	<script defer src="/js/animation.js"></script>
+		<script defer src="/js/animation.js"></script>
 	<script defer src="/js/main.js"></script>
 </head>
 <body id="about-body">
@@ -24,11 +24,18 @@
 			<!-- FIXME: use more semantic <header> -->
 			<!-- FIXME: use classes instead of id -->
 			<div id="overview-header">
-				<a href="#" class="link" id="about-link" data-turbolinks="false">About.</a>
+				<a href="#" class="link" id="about-link" data-turbolinks="false">
+					<span class="letter">A</span>
+					<span class="letter">b</span>
+					<span class="letter">o</span>
+					<span class="letter">u</span>
+					<span class="letter">t</span>
+					<span class="letter">.</span>
+				</a>
 
 				<a href="#" class="link" id="settings-link" data-turbolinks="false">
 				   <div class="bubble">
-				      <div id="white" class="option selected-option"></div>
+				      <div id="white" class="option selected-option-white"></div>
 				      <div id="black" class="option"></div>
 				      <div id="grey" class="option"></div>
 				   </div>
@@ -42,8 +49,7 @@
 
 		<div id="content-wrapper">
 			<div id="series-overview">
-				<!-- FIXME: Use double quotes -->
-				<a href='/series/series-1.html' class="series-wrapper">
+				<a href="/series/series-1.html" class="series-wrapper">
 					<img src="/img/series/series-1/landscape-cover.png " alt="Series 1 - Cover">
 					<div>
 						<h1 class="series-title">Breathtaking landscapes.</h1>
@@ -58,7 +64,7 @@
 					</p>
 				</a>
 
-				<a href='/series/series-2.html' class="series-wrapper">
+				<a href="/series/series-2.html" class="series-wrapper">
 					<img src="/img/series/series-2/mist-cover.png" alt="Series 2 - Cover">
 					<div>
 						<h1 class="series-title">Under the mist.</h1>
@@ -72,7 +78,7 @@
 					</p>
 				</a>
 
-				<a href='/series/series-3.html' class="series-wrapper">
+				<a href="/series/series-3.html" class="series-wrapper">
 					<img src="/img/series/series-3/street-cover.png" alt="Series 3 - Cover" class="last-cover">
 					<div class="last-cover">
 						<h1 class="series-title">Hongkong at night.</h1>

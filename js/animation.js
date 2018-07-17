@@ -2,19 +2,19 @@ function animatePopupIn() {
 	anime({
 		targets: '.bubble',
 		easing: 'easeOutExpo',
-		translateX: [10, 0],
+		translateX: [20, 0],
 		opacity: [0, 1],
-		duration: 500,
+		duration: 800,
 	})
 }
 
 function animatePopupOut() {
 	anime({
 		targets: '.bubble',
-		easing: 'easeOutExpo',
-		translateX: [0, -10],
+		easing: 'easeInExpo',
+		translateX: [0, -20],
 		opacity: [1, 0],
-		duration: 500,
+		duration: 700,
 	})
 }
 
@@ -154,7 +154,6 @@ function showMetaAnimation(imageWrapper, image) {
 }
 
 function hideMetaAnimation(imageWrapper, image) {
-
 	let metaTarget = imageWrapper.querySelectorAll('.meta');
 
 	anime({
@@ -166,10 +165,22 @@ function hideMetaAnimation(imageWrapper, image) {
 	})
 }
 
-// function seriesLoadAnimation(header, content) {
-// 	anime({
-// 		targets: [header, content],
-// 		opacity: [0, 1],
-// 		duration: 3000,
-// 	})
-// }
+function aboutHover() {
+	anime.timeline()
+	 .add({
+		 targets: '.letter',
+		 translateX: [0,-30],
+		 opacity: [1,0],
+		 easing: "easeInExpo",
+		 duration: 1000,
+		 delay: (el, i) => 30 * i,
+	 })
+	 .add({
+		 targets: '.letter',
+		 translateX: [40,0],
+		 opacity: [0,1],
+		 easing: "easeOutExpo",
+		 duration: 1100,
+		 delay: (el, i) => 30 * i,
+	 })
+}
