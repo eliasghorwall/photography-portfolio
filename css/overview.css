@@ -43,7 +43,7 @@ body {
 #overview-header-wrapper {
   height: 20%; }
 
-#header {
+#overview-header {
   display: flex;
   justify-content: space-between;
   width: 85%;

@@ -116,30 +116,29 @@ function overviewLoadAnimation(aboutLink, settingsLink) {
 
 function seriesLoadAnimation() {
 	anime({
-		targets: ['.series-title', '.series-meta' ,'.series-desc'],
-		translateX: [40, 0],
+		targets: ['.series-title-series', '.series-meta-series' ,'.series-desc-series'],
+		translateX: [200, 0],
 		opacity: [0,1],
 		easing: 'easeOutExpo',
 		delay: function(el, i) {
-			return 200 * i
+			return 600 + 200 * i
 		},
 	})
 
 	anime({
 		targets: '.series-back-link',
-		translateX: [-40, 0],
+		translateX: [-100, 0],
 		opacity: [0,1],
 		easing: 'easeOutExpo',
 	})
 
 	anime({
 		targets: '.image',
-		translateY: [-50, 0],
-		opacity: [0, 1],
+		translateX: [-500, 0],
+		opacity: [0,1],
 		easing: 'easeOutExpo',
-		duration: 2000,
 		delay: function(el, i) {
-			return 1000 * i
+			return 1200 + 1000 * i
 		},
 	})
 }

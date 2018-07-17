@@ -33,6 +33,16 @@
 		"oF": 0,
 		"oS": 3
 		},
+	"\/css\/base.css": {
+		"aP": 1,
+		"bl": 0,
+		"ft": 16,
+		"ma": 0,
+		"oA": 0,
+		"oAP": "\/css\/base-min.css",
+		"oF": 0,
+		"oS": 3
+		},
 	"\/css\/overview.css": {
 		"aP": 1,
 		"bl": 0,
@@ -227,10 +237,10 @@
 		"ft": 64,
 		"ma": 0,
 		"mi": 1,
-		"oA": 0,
+		"oA": 1,
 		"oAP": "\/js\/turbolinks-min.js",
-		"oF": 0,
-		"sC": 3,
+		"oF": 1,
+		"sC": 0,
 		"tS": 0
 		},
 	"\/sass\/about.sass": {
@@ -240,8 +250,21 @@
 		"dS": 0,
 		"ft": 2,
 		"ma": 0,
-		"oA": 0,
+		"oA": 1,
 		"oAP": "\/css\/about.css",
+		"oF": 2,
+		"oS": 0,
+		"uL": 1
+		},
+	"\/sass\/base.sass": {
+		"aP": 0,
+		"bl": 0,
+		"dP": 10,
+		"dS": 0,
+		"ft": 2,
+		"ma": 0,
+		"oA": 0,
+		"oAP": "\/css\/base.css",
 		"oF": 2,
 		"oS": 0,
 		"uL": 1
@@ -266,7 +289,7 @@
 		"dS": 0,
 		"ft": 2,
 		"ma": 0,
-		"oA": 0,
+		"oA": 1,
 		"oAP": "\/css\/series.css",
 		"oF": 2,
 		"oS": 0,

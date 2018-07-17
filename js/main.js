@@ -137,6 +137,15 @@ document.addEventListener('turbolinks:load', function() {
 		})
 	}
 
+	let series = document.querySelectorAll('.series-wrapper')
+
+	series.addEventListener('click', function() {
+		anime({
+			targets: 'body',
+			opacity: 0,
+		})
+	})
+
 	//- - - Turbolinks - - - //
 		// let header = document.querySelector('.header-wrapper');
 		// let content = document.querySelector('.content-wrapper');
