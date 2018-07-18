@@ -43,12 +43,12 @@ document.addEventListener('turbolinks:load', function() 	{
 	let grey = $1('#grey');
 	let black = $1('#black');
 	let page = $1('.overview-page');
-	let changingText = $('.series-title, .link, .link span, .about-page div div p, .about-page div div a');
+	let changingText = $('.series-title, .link, .link span, .about-text, .mail-link');
 	let aboutPage = $1('.about-page');
 	let aboutTitle = $1('.about-title');
-	let descTexts = $('.series-meta, .series-desc')
+	let descTexts = $('.series-meta, .series-desc');
 
-	function changeColorTheme(currentOption, otherOptions, bgColor, textColor, bubbleBg, aboutHeadline, aboutBackColor, greyDescColor) {
+	function changeColorTheme(currentOption, otherOptions, bgColor, textColor, bubbleBg, aboutHeadline, aboutBackColor) {
 		// Highlight current option with correct border color
 		if (currentOption === black) {
 			currentOption.classList.add('selected-option-black');
@@ -67,7 +67,7 @@ document.addEventListener('turbolinks:load', function() 	{
 
 		// Change color and background of elements
 		page.classList.remove('white-bg', 'grey-bg', 'black-bg');
-		page.classList.add(`${bgColor}`);
+		page.classList.add(bgColor);
 
 		// Adjust text colors
 		if (changingText) {
@@ -82,10 +82,9 @@ document.addEventListener('turbolinks:load', function() 	{
 			})
 		}
 
-
 		// Adjust popup background
 		bubble.classList.remove('black-bubble', 'grey-bubble');
-		bubble.classList.add(bubbleBg) // FIXME Don't need to use template strings.
+		bubble.classList.add(bubbleBg)
 
 		//Adjust about-page background
 		if (aboutPage) {
@@ -109,20 +108,22 @@ document.addEventListener('turbolinks:load', function() 	{
 			aboutBackBtn.classList.add(aboutBackColor);
 		}
 
-
 		// Adjust grey desc colors
-		console.log(page.className);
-
-		// FIXME: Always use strict comparison ====
 		if (page.className === 'overview-page grey-bg') {
-			// FIXME: Use shorthand syntax
 			descTexts.forEach((descText) => {
-				descText.classList.add(greyDescColor);
+				descText.classList.add('grey-desc-color');
 			})
 		} else {
 			descTexts.forEach((descText) => {
-				descText.classList.remove(greyDescColor);
+				descText.classList.remove('grey-desc-color');
 			})
+		}
+
+		//Change series theme
+		let seriesBg = $('.series-body');
+
+		if (seriesBg) {
+			seriesBg.classList.add('.black-bg');
 		}
 	};
 
@@ -137,7 +138,7 @@ document.addEventListener('turbolinks:load', function() 	{
 		});
 
 		grey.addEventListener('click', () => {
-			changeColorTheme(grey , [white, black], 'grey-bg', 'white-text', 'grey-bubble', 'grey-about-title', 'grey-about-back', 'grey-desc-color');
+			changeColorTheme(grey , [white, black], 'grey-bg', 'white-text', 'grey-bubble', 'grey-about-title', 'grey-about-back');
 		});
 	}
 
@@ -158,7 +159,6 @@ document.addEventListener('turbolinks:load', function() 	{
 		aboutBackBtn.classList.add('enable-interaction');
 
 		let aboutPageClass = aboutPage.className;
-		console.log(aboutPageClass);
 
 		if (aboutPageClass === 'about-page white-bg') {
 			texts.forEach((text) => {
@@ -188,7 +188,6 @@ document.addEventListener('turbolinks:load', function() 	{
 		aboutBackBtn.classList.remove('enable-interaction');
 
 		let aboutPageClass = aboutPage.className;
-		console.log(aboutPageClass);
 
 		texts.forEach((text) => {
 			text.classList.remove('white-darker-text');
@@ -214,7 +213,7 @@ document.addEventListener('turbolinks:load', function() 	{
 
 	if (imageWrappers) {
 		imageWrappers.forEach((imageWrapper) => {
-				let image = imageWrapper.querySelector('img');
+			let image = imageWrapper.querySelector('img');
 
 			image.addEventListener('mouseenter', () => {
 				showMetaAnimation(imageWrapper, image);
@@ -227,37 +226,29 @@ document.addEventListener('turbolinks:load', function() 	{
 	}
 
 	//- - - USING FETCH API TO LOAD ABOUT PAGE - - - //
-	aboutLink.addEventListener('click', function(event) {
-		event.preventDefault();
-		fetch(`http://elias-macbook-pro.local:5757/about.html`)
-			.then(function(response) {
-				//When page loaded convert it into text
-				return response.text()
-			})
-			.then(function(html) {
-				// Initialize the DOM parser
-				let parser = new DOMParser();
-				// Parse the HTML
-				let doc = parser.parseFromString(html, "text/html");
-
-				// Select part of document
-				let aboutContent = doc.querySelector('.about-page div');
-				aboutPage.appendChild(aboutContent);
+	if (aboutLink) {
+		aboutLink.addEventListener('mouseenter', function(event) {
+			event.preventDefault();
+			fetch(`http://elias-macbook-pro.local:5757/about.html`)
+				.then(function(response) {
+					//When page loaded convert it into text
+					return response.text()
 				})
-			})
-	});
+				.then(function(html) {
+					console.log('loading html');
+					// Initialize the DOM parser
+					let parser = new DOMParser();
+					// Parse the HTML
+					let doc = parser.parseFromString(html, "text/html");
 
-
-	// Marius instructions:
-	//Why use fetch instead of Turbolinks
-
-	// fetch and insert html
-	// show animation
-
-	// Parse HTML from response.
-	// let html = res.xxxxx;
-
-	// Filter HTML so you get just the contents of body
-	// let about = html.querySelector('body')
-	//
-	// $1('.about-page').innerHTML = about;
+					// Keep fetch from loading the page multiple times when its already loaded
+					let testElement = $1('.about-title');
+					if (!testElement) {
+						// Select part of document and append to about wrapper
+						let aboutContent = doc.querySelector('.about-page div');
+						aboutPage.appendChild(aboutContent);
+					}
+					})
+		})
+	}
+});

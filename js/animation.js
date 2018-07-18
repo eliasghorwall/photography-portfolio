@@ -104,11 +104,11 @@ function overviewLoadAnimation(aboutLink, settingsLink) {
 
 	anime({
 		targets: '.series-wrapper img, .series-wrapper div, .series-wrapper p',
-		translateY: [-150, 0],
-		opacity: [0,1],
+		translateY: [-120, 0],
+		opacity: [0, 1],
 		easing: 'easeOutExpo',
-		delay: (el, i, l) => 1000 + 100 * i,
-		duration: 1200,
+		delay: (el, i, l) => 1100 + 120 * i,
+		duration: 1000,
 	})
 }
 

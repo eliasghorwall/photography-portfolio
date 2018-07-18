@@ -149,7 +149,10 @@ body
 
 	img
 		width: 690px
-		transition: filter 1s ease
+		transition: filter 1s linear
+
+.image-wrapper
+	overflow: hidden
 
 .series-title
 	font-weight: bold
@@ -158,12 +161,14 @@ body
 
 .series-meta
 	color: $text-grey
+	transition: color 1s ease
 
 .series-desc
 	max-width: 450px
 	text-align: justify
 	color: $text-grey
 	line-height: 24px
+	transition: color 1s ease
 
 .last-cover
 	margin-right: 133px
@@ -206,7 +211,7 @@ body
 	pointer-events: auto
 
 .grey-desc-color
-	color: red
+	color: #CCCCCC
 
 .letter
 	display: inline-block
