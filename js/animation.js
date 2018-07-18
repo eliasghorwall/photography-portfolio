@@ -172,7 +172,7 @@ function aboutHover() {
 		 translateX: [0,-30],
 		 opacity: [1,0],
 		 easing: "easeInExpo",
-		 duration: 1000,
+		 duration: 500,
 		 delay: (el, i) => 30 * i,
 	 })
 	 .add({

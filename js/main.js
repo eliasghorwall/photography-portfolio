@@ -1,5 +1,5 @@
 // TODO: What if TL does not work?
-document.addEventListener('turbolinks:load', function() {
+document.addEventListener('turbolinks:load', function() 	{
 	// - - - SETTINGS POPUP - - - //
 	// FIXME: Always use querySelecto(All), unifies things and makes them easier to refactor.
 	// Use shorthands for qS and qSA:
@@ -43,7 +43,7 @@ document.addEventListener('turbolinks:load', function() {
 	let grey = $1('#grey');
 	let black = $1('#black');
 	let page = $1('.overview-page');
-	let changingText = $('.series-title, .link, .about-page div p, .about-page div a');
+	let changingText = $('.series-title, .link, .link span, .about-page div div p, .about-page div div a');
 	let aboutPage = $1('.about-page');
 	let aboutTitle = $1('.about-title');
 	let descTexts = $('.series-meta, .series-desc')
@@ -58,7 +58,7 @@ document.addEventListener('turbolinks:load', function() {
 			currentOption.classList.add('selected-option-white');
 		}
 
-		// Deselect remaining two options
+		// Deselect remaining options
 		otherOptions.forEach(function(option) {
 			option.classList.remove('selected-option-white');
 			option.classList.remove('selected-option-grey');
@@ -70,40 +70,50 @@ document.addEventListener('turbolinks:load', function() {
 		page.classList.add(`${bgColor}`);
 
 		// Adjust text colors
-		changingText.forEach((text) => {
-			text.classList.remove('white-text')
-			text.classList.add(textColor);
-		})
+		if (changingText) {
+			changingText.forEach((text) => {
+				text.classList.remove('white-text')
+				text.classList.add(textColor);
+			})
 
-		changingText.forEach((text) => {
-			text.classList.remove('white-text')
-			text.classList.add(textColor);
-		})
+			changingText.forEach((text) => {
+				text.classList.remove('white-text')
+				text.classList.add(textColor);
+			})
+		}
+
 
 		// Adjust popup background
 		bubble.classList.remove('black-bubble', 'grey-bubble');
 		bubble.classList.add(bubbleBg) // FIXME Don't need to use template strings.
 
 		//Adjust about-page background
-		aboutPage.classList.remove('black-bg', 'grey-bg', 'white-bg');
-		aboutPage.classList.add(bgColor);
+		if (aboutPage) {
+			aboutPage.classList.remove('black-bg', 'grey-bg', 'white-bg');
+			aboutPage.classList.add(bgColor);
+		}
 
 		// Adjust about-title color
-		aboutTitle.classList.remove('black-about-title', 'grey-about-title')
-		aboutTitle.classList.add(aboutHeadline);
+		if (aboutTitle) {
+			aboutTitle.classList.remove('black-about-title', 'grey-about-title')
+			aboutTitle.classList.add(aboutHeadline);
+		}
 
 		// Adjust aboutBackBtn color
-		aboutBackBtn.classList.remove('black-about-back', 'grey-about-back');
-		aboutBackBtn.classList.add(aboutBackColor);
+		if (aboutBackBtn) {
+			aboutBackBtn.classList.remove('black-about-back', 'grey-about-back');
+			aboutBackBtn.classList.add(aboutBackColor);
 
-		// Adjust selectedOption border-color
-		aboutBackBtn.classList.remove('black-about-back', 'grey-about-back');
-		aboutBackBtn.classList.add(aboutBackColor);
+			// Adjust selectedOption border-color
+			aboutBackBtn.classList.remove('black-about-back', 'grey-about-back');
+			aboutBackBtn.classList.add(aboutBackColor);
+		}
+
 
 		// Adjust grey desc colors
 		console.log(page.className);
 
-		// FIXME: Always use strict comparison =====
+		// FIXME: Always use strict comparison ====
 		if (page.className === 'overview-page grey-bg') {
 			// FIXME: Use shorthand syntax
 			descTexts.forEach((descText) => {
@@ -216,74 +226,38 @@ document.addEventListener('turbolinks:load', function() {
 		})
 	}
 
-	// let series = $('.series-wrapper')
-	//
-	// series.addEventListener('click', function() {
-	// 	anime({
-	// 		targets: 'body',
-	// 		opacity: 0,
-	// 	})
-	// })
+	//- - - USING FETCH API TO LOAD ABOUT PAGE - - - //
+	aboutLink.addEventListener('click', function(event) {
+		event.preventDefault();
+		fetch(`http://elias-macbook-pro.local:5757/about.html`)
+			.then(function(response) {
+				//When page loaded convert it into text
+				return response.text()
+			})
+			.then(function(html) {
+				// Initialize the DOM parser
+				let parser = new DOMParser();
+				// Parse the HTML
+				let doc = parser.parseFromString(html, "text/html");
 
-	//- - - Turbolinks - - - //
-		// let header = $1('.header-wrapper');
-		// let content = $1('.content-wrapper');
-		//
-		// seriesLoadAnimation(header, content);
-	// let series = $('.series-wrapper')
-	//
-	// series.addEventListener('turbolinks:click', (event) => {
-	// 	let header = $1('.header-wrapper');
-	// 	let content = $1('.content-wrapper');
-	//
-	// 	anime({
-	// 		targets: [header, content],
-	// 		opacity: [0, 1],
-	// 		duration: 3000,
-	// 	})
-	// });
+				// Select part of document
+				let aboutContent = doc.querySelector('.about-page div');
+				aboutPage.appendChild(aboutContent);
+				})
+			})
+	});
 
-	// aboutLink.addEventListener('click', (ev) {
-	// 	ev.preventDefault();
-	//
-	// 	// fetch and insert html
-	// 	// show animation
-	// })
-	//
-	// let p = fetch(`http://${window.location.hostname}/about.html`);
-	// p.then(function(res) => {
-	// 	// Parse HTML from response.
-	// 	console.log(res);
-	// 	let html = res.xxxxx;
-	//
-	// 	// Filter HTML so you get just the contents of body
-	// 	let about = html.querySelector('body')
-	//
-	// 	$1('.about-page').innerHTML = about;
-	// })
 
-	// //- - - Hover animations - - - //
-	// aboutLink.addEventListener('mouseenter', () => {
-	// 	hoverAnimation();
-	// })
+	// Marius instructions:
+	//Why use fetch instead of Turbolinks
 
-	// aboutLink.addEventListener('mouseleave', () => {
-	// 	anime.timeline({loop: false})
-	// 	 .add({
-	// 		 targets: '.letter',
-	// 		 translateX: [0,-30],
-	// 		 opacity: [1,0],
-	// 		 easing: "easeInExpo",
-	// 		 duration: 1100,
-	// 		 delay: (el, i) => 30 * i,
-	// 	 })
-	// 	 .add({
-	// 		 targets: '.letter',
-	// 		 translateX: [40,0],
-	// 		 opacity: [0,1],
-	// 		 easing: "easeOutExpo",
-	// 		 duration: 1100,
-	// 		 delay: (el, i) => 30 * i,
-	// 	 })
-	// })
-});
+	// fetch and insert html
+	// show animation
+
+	// Parse HTML from response.
+	// let html = res.xxxxx;
+
+	// Filter HTML so you get just the contents of body
+	// let about = html.querySelector('body')
+	//
+	// $1('.about-page').innerHTML = about;
