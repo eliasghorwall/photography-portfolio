@@ -138,23 +138,25 @@ function seriesLoadAnimation() {
 	})
 }
 
-function showMetaAnimation(imageWrapper, image) {
-
+function showMetaAnimation(imageWrapper) {
 	let metaTarget = imageWrapper.querySelectorAll('.meta');
+
+	anime.remove(metaTarget);
 
 	anime({
 		targets: metaTarget,
 		translateX: 200,
 		opacity: 1,
 		easing: 'easeOutExpo',
-		// FIXME: Use shorthand and implicit return delay: (el, i, l) => 25 * i,
 		delay: (el, i, l) => 25 * i,
 		duration: 950,
 	})
 }
 
-function hideMetaAnimation(imageWrapper, image) {
+function hideMetaAnimation(imageWrapper) {
 	let metaTarget = imageWrapper.querySelectorAll('.meta');
+
+	anime.remove(metaTarget);
 
 	anime({
 		targets: metaTarget,
@@ -183,4 +185,26 @@ function aboutHover() {
 		 duration: 1100,
 		 delay: (el, i) => 30 * i,
 	 })
+}
+
+function revealerToRight() {
+	anime.timeline({
+		easing: 'easeOutExpo',
+		targets: '.revealer',
+	})
+		.add({
+			left: 0,
+			duration: 700,
+		})
+}
+
+function revealerToLeft() {
+	anime.timeline({
+		easing: 'easeOutExpo',
+		targets: '.revealer',
+	})
+		.add({
+			left: ['100vw', 0],
+			duration: 700,
+		})
 }

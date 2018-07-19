@@ -13,11 +13,21 @@
 	<script defer src="/js/turbolinks.js"></script>
 	<script defer src="/js/animation.js"></script>
 	<script defer src="/js/main.js"></script>
+	<script>
+		//- - - SET DELAY ON LINKS - - - //
+		function delayLinks(URL) {
+			setTimeout(() => {
+				window.location = URL
+			}, 600);
+		}
+	</script>
 </head>
 <body>
+	<div class="revealer"></div>
+
 	<div id="header-wrapper">
 		<div id="header">
-			<a href="../index.html" class="link series-back-link"><span>‹</span>Back</a>
+			<a href="javascript:delayLinks('../index.html')" class="link series-back-link"><span>‹</span>Back</a>
 
 			<div class="series-desc-wrapper">
 				<div>

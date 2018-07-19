@@ -11,13 +11,23 @@
 	<!-- JAVASCRIPT -->
 	<script defer src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.2.0/anime.min.js"></script>
 	<script defer src="/js/turbolinks.js"></script>
-		<script defer src="/js/animation.js"></script>
+	<script defer src="/js/animation.js"></script>
 	<script defer src="/js/main.js"></script>
+	<script>
+		//- - - SET DELAY ON LINKS - - - //
+		function delayLinks(URL) {
+			setTimeout(() => {
+				window.location = URL
+			}, 600);
+		}
+	</script>
 </head>
 <body id="about-body">
 	<div class="about-page white-bg">
 		<!-- Will be populated through JS -->
 	</div>
+
+	<div class="revealer"></div>
 
 	<div class="overview-page">
 		<div id="overview-header-wrapper">
@@ -49,7 +59,7 @@
 
 		<div id="content-wrapper">
 			<div id="series-overview">
-				<a href="/series/series-1.html" class="series-wrapper">
+				<a href="javascript:delayLinks('/series/series-1.html')" class="series-wrapper">
 					<img src="/img/series/series-1/landscape-cover.png " alt="Series 1 - Cover">
 					<div>
 						<h1 class="series-title">Breathtaking landscapes.</h1>
@@ -64,7 +74,7 @@
 					</p>
 				</a>
 
-				<a href="/series/series-2.html" class="series-wrapper">
+				<a href="javascript:delayLinks('/series/series-2.html')" class="series-wrapper">
 					<img src="/img/series/series-2/mist-cover.png" alt="Series 2 - Cover">
 					<div>
 						<h1 class="series-title">Under the mist.</h1>
@@ -78,7 +88,93 @@
 					</p>
 				</a>
 
-				<a href="/series/series-3.html" class="series-wrapper">
+				<a href="javascript:delayLinks('/series/series-3.html')" class="series-wrapper">
+					<img src="/img/series/series-3/street-cover.png" alt="Series 3 - Cover" class="last-cover">
+					<div class="last-cover">
+						<h1 class="series-title">Hongkong at night.</h1>
+						<span class="series-meta">220515 — Hongkong</span>
+					</div>
+					<p class="series-desc last-cover">
+						I travelled to Bangkok this year and the most fascinating thing
+						in there, for me at least, were the nights. All the little shops,
+						the lights and signs make this a wonderful place to take stunning
+						photographs in. Enjoy.
+					</p>
+				</a>
+
+				<a href="javascript:delayLinks('/series/series-1.html')" class="series-wrapper">
+					<img src="/img/series/series-1/landscape-cover.png " alt="Series 1 - Cover">
+					<div>
+						<h1 class="series-title">Breathtaking landscapes.</h1>
+						<span class="series-meta">270318 — Canada</span>
+					</div>
+					<p class="series-desc">
+						This earth is gorgeous, but I feel we sometimes tend
+						to forget that. I created this series to remind us of
+						and showcase the incredible landscapes Canada has to offer.
+						I was able to spend three weeks there during March of
+						this year. Specifiaclly, I visited Nova Scotia. Have fun.
+					</p>
+				</a>
+
+				<a href="javascript:delayLinks('/series/series-2.html')" class="series-wrapper">
+					<img src="/img/series/series-2/mist-cover.png" alt="Series 2 - Cover">
+					<div>
+						<h1 class="series-title">Under the mist.</h1>
+						<span class="series-meta">130901 — Hamburg</span>
+					</div>
+					<p class="series-desc">
+						It doesn’t happen very often, but when it does I always feel the need
+						to go out and shoot. This is a collection of misty pictures I captured
+						during the time. I don’t know about you, but I think mist has something
+						very mysterious to it and it can transforms places completely. It’s magic.
+					</p>
+				</a>
+
+				<a href="javascript:delayLinks('/series/series-3.html')" class="series-wrapper">
+					<img src="/img/series/series-3/street-cover.png" alt="Series 3 - Cover" class="last-cover">
+					<div class="last-cover">
+						<h1 class="series-title">Hongkong at night.</h1>
+						<span class="series-meta">220515 — Hongkong</span>
+					</div>
+					<p class="series-desc last-cover">
+						I travelled to Bangkok this year and the most fascinating thing
+						in there, for me at least, were the nights. All the little shops,
+						the lights and signs make this a wonderful place to take stunning
+						photographs in. Enjoy.
+					</p>
+				</a>
+
+				<a href="javascript:delayLinks('/series/series-1.html')" class="series-wrapper">
+					<img src="/img/series/series-1/landscape-cover.png " alt="Series 1 - Cover">
+					<div>
+						<h1 class="series-title">Breathtaking landscapes.</h1>
+						<span class="series-meta">270318 — Canada</span>
+					</div>
+					<p class="series-desc">
+						This earth is gorgeous, but I feel we sometimes tend
+						to forget that. I created this series to remind us of
+						and showcase the incredible landscapes Canada has to offer.
+						I was able to spend three weeks there during March of
+						this year. Specifiaclly, I visited Nova Scotia. Have fun.
+					</p>
+				</a>
+
+				<a href="javascript:delayLinks('/series/series-2.html')" class="series-wrapper">
+					<img src="/img/series/series-2/mist-cover.png" alt="Series 2 - Cover">
+					<div>
+						<h1 class="series-title">Under the mist.</h1>
+						<span class="series-meta">130901 — Hamburg</span>
+					</div>
+					<p class="series-desc">
+						It doesn’t happen very often, but when it does I always feel the need
+						to go out and shoot. This is a collection of misty pictures I captured
+						during the time. I don’t know about you, but I think mist has something
+						very mysterious to it and it can transforms places completely. It’s magic.
+					</p>
+				</a>
+
+				<a href="javascript:delayLinks('/series/series-3.html')" class="series-wrapper">
 					<img src="/img/series/series-3/street-cover.png" alt="Series 3 - Cover" class="last-cover">
 					<div class="last-cover">
 						<h1 class="series-title">Hongkong at night.</h1>

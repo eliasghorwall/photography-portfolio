@@ -193,3 +193,11 @@ body {
   display: inline-block;
   line-height: 1em;
   letter-spacing: -4px; }
+
+.revealer {
+  height: 100vh;
+  width: 100vw;
+  background: #FFFFFF;
+  position: absolute;
+  z-index: 1000;
+  left: -100vw; }

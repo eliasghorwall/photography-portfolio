@@ -1,49 +1,31 @@
-// TODO: What if TL does not work?
+// TODO: What if TL does not work? + Add cookies to change about and series themes
 document.addEventListener('turbolinks:load', function() 	{
-	// - - - SETTINGS POPUP - - - //
-	// FIXME: Always use querySelecto(All), unifies things and makes them easier to refactor.
-	// Use shorthands for qS and qSA:
+	//Set up selector shorthands
 	let $ = document.querySelectorAll.bind(document);
 	let $1 = document.querySelector.bind(document);
 
+	// - - - SETTINGS POPUP - - - //
 	let settingsLink = $1('#settings-link');
 	let bubble = $1('.bubble');
 
-	function showPopup() {
-		bubble.classList.add('show-popup');
-		animatePopupIn();
-	};
-
-	function hidePopup() {
-		bubble.classList.remove('show-popup');
-		animatePopupOut();
-	};
-
-
-	// Not necessary in this case, event handler is only attached once
-	//
-	// Idempotent version, as recommended by TL
-	// function attachSettingsHandlers() {
-	// 	let settingsLink = document.getElementById('settings-link');
-	//
-	// 	if (!settingsLink.dataset.initialized) {
-	// 		settingsLink.addEventListener('mouseenter', showPopup);
-	// 		settingsLink.addEventListener('mouseleave', hidePopup);
-	// 		settingsLink.dataset.initialized = true;
-	// 	}
-	// }
-
 	if (settingsLink) {
-		settingsLink.addEventListener('mouseenter', showPopup);
-		settingsLink.addEventListener('mouseleave', hidePopup);
+		settingsLink.addEventListener('mouseenter', () => {
+			bubble.classList.add('show-popup');
+			animatePopupIn();
+		});
+
+		settingsLink.addEventListener('mouseleave', () => {
+			bubble.classList.remove('show-popup');
+			animatePopupOut();
+		});
 	}
 
-	// Implement option selection and changing colors & backgrounds
+	// Implement option selection and changing themes
 	let white = $1('#white');
 	let grey = $1('#grey');
 	let black = $1('#black');
 	let page = $1('.overview-page');
-	let changingText = $('.series-title, .link, .link span, .about-text, .mail-link');
+	let changingTexts = $('.series-title, .link, .link span');
 	let aboutPage = $1('.about-page');
 	let aboutTitle = $1('.about-title');
 	let descTexts = $('.series-meta, .series-desc');
@@ -60,86 +42,54 @@ document.addEventListener('turbolinks:load', function() 	{
 
 		// Deselect remaining options
 		otherOptions.forEach(function(option) {
-			option.classList.remove('selected-option-white');
-			option.classList.remove('selected-option-grey');
-			option.classList.remove('selected-option-black');
+			option.classList.remove('selected-option-black', 'selected-option-grey', 'selected-option-white');
 		})
 
-		// Change color and background of elements
-		page.classList.remove('white-bg', 'grey-bg', 'black-bg');
-		page.classList.add(bgColor);
+		if (page, changingTexts, bubble, aboutPage, aboutTitle, aboutBackBtn) {
+			// Change color and background of elements
+			page.classList.remove('white-bg', 'grey-bg', 'black-bg');
+			page.classList.add(bgColor);
 
-		// Adjust text colors
-		if (changingText) {
-			changingText.forEach((text) => {
+			// Adjust text colors
+			changingTexts.forEach((text) => {
 				text.classList.remove('white-text')
 				text.classList.add(textColor);
 			})
 
-			changingText.forEach((text) => {
-				text.classList.remove('white-text')
-				text.classList.add(textColor);
-			})
-		}
+			// Adjust popup background
+			bubble.classList.remove('black-bubble', 'grey-bubble');
+			bubble.classList.add(bubbleBg)
 
-		// Adjust popup background
-		bubble.classList.remove('black-bubble', 'grey-bubble');
-		bubble.classList.add(bubbleBg)
-
-		//Adjust about-page background
-		if (aboutPage) {
+			//Adjust about-page background
 			aboutPage.classList.remove('black-bg', 'grey-bg', 'white-bg');
 			aboutPage.classList.add(bgColor);
-		}
 
-		// Adjust about-title color
-		if (aboutTitle) {
-			aboutTitle.classList.remove('black-about-title', 'grey-about-title')
-			aboutTitle.classList.add(aboutHeadline);
-		}
-
-		// Adjust aboutBackBtn color
-		if (aboutBackBtn) {
-			aboutBackBtn.classList.remove('black-about-back', 'grey-about-back');
-			aboutBackBtn.classList.add(aboutBackColor);
-
-			// Adjust selectedOption border-color
-			aboutBackBtn.classList.remove('black-about-back', 'grey-about-back');
-			aboutBackBtn.classList.add(aboutBackColor);
-		}
-
-		// Adjust grey desc colors
-		if (page.className === 'overview-page grey-bg') {
-			descTexts.forEach((descText) => {
-				descText.classList.add('grey-desc-color');
-			})
-		} else {
-			descTexts.forEach((descText) => {
-				descText.classList.remove('grey-desc-color');
-			})
-		}
-
-		//Change series theme
-		let seriesBg = $('.series-body');
-
-		if (seriesBg) {
-			seriesBg.classList.add('.black-bg');
+			// Adjust grey description colors
+			if (page.className === 'overview-page grey-bg') {
+				descTexts.forEach((descText) => {
+					descText.classList.add('grey-desc-color');
+				})
+			} else {
+				descTexts.forEach((descText) => {
+					descText.classList.remove('grey-desc-color');
+				})
+			}
 		}
 	};
 
-	//Not sure if checking for existence of multiple items this way is valid, wrote it intuitively. Could not find anything online.
+	// Calling changeColorTheme() with correct classes
 	if (white, grey, black) {
-		white.addEventListener('click', () => {
-			changeColorTheme(white, [grey, black], 'white-bg',  'black-text', 'white-bubble', 'white-about-title');
-		});
-
-		black.addEventListener('click', () => {
-			changeColorTheme(black, [white, grey], 'black-bg', 'white-text', 'black-bubble', 'black-about-title', 'black-about-back');
-		});
-
-		grey.addEventListener('click', () => {
-			changeColorTheme(grey , [white, black], 'grey-bg', 'white-text', 'grey-bubble', 'grey-about-title', 'grey-about-back');
-		});
+		[white, grey, black].forEach((theme) => {
+			theme.addEventListener('click', () => {
+				if (theme === white) {
+					changeColorTheme(white, [grey, black], 'white-bg',  'black-text', 'white-bubble', 'white-about-title');
+				} else if (theme === grey){
+					changeColorTheme(grey , [white, black], 'grey-bg', 'white-text', 'grey-bubble', 'grey-about-title', 'grey-about-back');
+				} else {
+					changeColorTheme(black, [white, grey], 'black-bg', 'white-text', 'black-bubble', 'black-about-title', 'black-about-back');
+				}
+			});
+		})
 	}
 
 	// - - - HIDE/SHOW ABOUT PAGE - - - //
@@ -158,9 +108,7 @@ document.addEventListener('turbolinks:load', function() 	{
 		page.classList.add('disable-interaction');
 		aboutBackBtn.classList.add('enable-interaction');
 
-		let aboutPageClass = aboutPage.className;
-
-		if (aboutPageClass === 'about-page white-bg') {
+		if (aboutPage.className === 'about-page white-bg') {
 			texts.forEach((text) => {
 				text.classList.add('white-darker-text')
 			})
@@ -190,18 +138,14 @@ document.addEventListener('turbolinks:load', function() 	{
 		let aboutPageClass = aboutPage.className;
 
 		texts.forEach((text) => {
-			text.classList.remove('white-darker-text');
-			text.classList.remove('black-darker-text');
-			text.classList.remove('grey-darker-text');
+			text.classList.remove('white-darker-text', 'black-darker-text', 'grey-darker-text');
 		})
 	}
 
 	if (aboutLink, aboutBackBtn) {
 		aboutLink.addEventListener('click', showAboutPage);
+		aboutLink.addEventListener('mouseenter', aboutHover);
 		aboutBackBtn.addEventListener('click', hideAboutPage);
-		aboutLink.addEventListener('mouseenter', () => {
-			aboutHover();
-		});
 	}
 
 	// - - - INITIAL OVERVIEW AND SERIES LOAD ANIMATION - - - //
@@ -215,40 +159,59 @@ document.addEventListener('turbolinks:load', function() 	{
 		imageWrappers.forEach((imageWrapper) => {
 			let image = imageWrapper.querySelector('img');
 
-			image.addEventListener('mouseenter', () => {
-				showMetaAnimation(imageWrapper, image);
-			});
+			setTimeout(function () {
+				image.addEventListener('mouseenter', () => {
+					showMetaAnimation(imageWrapper);
+				})
 
-			image.addEventListener('mouseleave', () => {
-				hideMetaAnimation(imageWrapper, image);
-			});
+				image.addEventListener('mouseleave', () => {
+					hideMetaAnimation(imageWrapper);
+				})
+			}, 1000);
 		})
 	}
 
 	//- - - USING FETCH API TO LOAD ABOUT PAGE - - - //
 	if (aboutLink) {
-		aboutLink.addEventListener('mouseenter', function(event) {
-			event.preventDefault();
-			fetch(`http://elias-macbook-pro.local:5757/about.html`)
+		aboutLink.addEventListener('mouseenter', function(e) {
+			e.preventDefault();
+
+			let baseURL = `${window.location.protocol}//${window.location.hostname}`;
+
+			if (window.location.port) {
+				baseURL += `:${window.location.port}`;
+			}
+
+			fetch(`${baseURL}/about.html`)
 				.then(function(response) {
-					//When page loaded convert it into text
 					return response.text()
 				})
 				.then(function(html) {
-					console.log('loading html');
-					// Initialize the DOM parser
-					let parser = new DOMParser();
-					// Parse the HTML
-					let doc = parser.parseFromString(html, "text/html");
+					let doc = new DOMParser().parseFromString(html, "text/html");
 
 					// Keep fetch from loading the page multiple times when its already loaded
 					let testElement = $1('.about-title');
 					if (!testElement) {
-						// Select part of document and append to about wrapper
-						let aboutContent = doc.querySelector('.about-page div');
-						aboutPage.appendChild(aboutContent);
+						aboutPage.appendChild(doc.querySelector('.about-page div'));
 					}
-					})
+				})
 		})
 	}
+
+	//- - - PAGE FADE OUT WHEN SERIES CLICKED - - - //
+	let seriesWrappers = $('.series-wrapper');
+	let seriesBackBtn = $('.series-back-link');
+
+	seriesBackBtn.forEach((btn) => {
+		btn.addEventListener('click', () => {
+			console.log('backbackback');
+			revealerToLeft();
+		})
+	})
+
+	seriesWrappers.forEach((wrapper) => {
+		wrapper.addEventListener('click', () => {
+			revealerToRight();
+		})
+	})
 });
