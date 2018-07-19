@@ -223,5 +223,35 @@ body
 	width: 100vw
 	background: $white-bg
 	position: absolute
-	z-index: 1000
+	z-index: 10002
 	left: -100vw
+
+.image-stack
+	position: relative
+	z-index: 1
+
+	div
+		background-color: #B59D7F
+		height: 100%
+		position: absolute
+
+.stack-1
+	// opacity: 0.3
+	opacity: 0
+	width: 95%
+	z-index: -1
+	top: 6px
+
+.stack-2
+	// opacity: 0.2
+	opacity: 0
+	width: 90%
+	z-index: -2
+	top: 12px
+
+.stack-3
+	// opacity: 0.1
+	opacity: 0
+	width: 85%
+	z-index: -3
+	top: 18px

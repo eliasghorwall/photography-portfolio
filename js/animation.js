@@ -103,7 +103,7 @@ function overviewLoadAnimation(aboutLink, settingsLink) {
 	})
 
 	anime({
-		targets: '.series-wrapper img, .series-wrapper div, .series-wrapper p',
+		targets: '.series-wrapper img, .overview-title-wrapper, .series-wrapper p',
 		translateY: [-120, 0],
 		opacity: [0, 1],
 		easing: 'easeOutExpo',
@@ -207,4 +207,14 @@ function revealerToLeft() {
 			left: ['100vw', 0],
 			duration: 700,
 		})
+}
+
+function animateAboutPage() {
+	anime({
+		targets: '.about-title',
+		opacity: 1,
+		translateX: [500, 0],
+		easing: 'easeOutExpo',
+		duration: 1500,
+	})
 }

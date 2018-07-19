@@ -199,8 +199,34 @@ body {
   width: 100vw;
   background: #FFFFFF;
   position: absolute;
-  z-index: 1000;
+  z-index: 10002;
   left: -100vw; }
+
+.image-stack {
+  position: relative;
+  z-index: 1; }
+  .image-stack div {
+    background-color: #B59D7F;
+    height: 100%;
+    position: absolute; }
+
+.stack-1 {
+  opacity: 0;
+  width: 95%;
+  z-index: -1;
+  top: 6px; }
+
+.stack-2 {
+  opacity: 0;
+  width: 90%;
+  z-index: -2;
+  top: 12px; }
+
+.stack-3 {
+  opacity: 0;
+  width: 85%;
+  z-index: -3;
+  top: 18px; }
 
 #about-body {
   overflow: hidden; }
@@ -249,7 +275,8 @@ body {
   position: absolute;
   left: 200px;
   top: 50px;
-  z-index: 1; }
+  z-index: 1;
+  opacity: 0; }
 
 .about-back {
   background-color: #FFFFFF;
@@ -260,7 +287,10 @@ body {
   top: 13%;
   left: -2.8%;
   cursor: pointer;
-  opacity: 0; }
+  opacity: 0;
+  transition: transform 1s cubic-bezier(0.19, 1, 0.22, 1); }
+  .about-back:hover {
+    transform: translateX(-10px); }
   .about-back span {
     font-size: 17px;
     margin: 0 10px 5px 0; }

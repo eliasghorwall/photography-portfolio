@@ -31,8 +31,6 @@
 
 	<div class="overview-page">
 		<div id="overview-header-wrapper">
-			<!-- FIXME: use more semantic <header> -->
-			<!-- FIXME: use classes instead of id -->
 			<div id="overview-header">
 				<a href="#" class="link" id="about-link" data-turbolinks="false">
 					<span class="letter">A</span>
@@ -60,8 +58,13 @@
 		<div id="content-wrapper">
 			<div id="series-overview">
 				<a href="javascript:delayLinks('/series/series-1.html')" class="series-wrapper">
-					<img src="/img/series/series-1/landscape-cover.png " alt="Series 1 - Cover">
-					<div>
+					<div class="image-stack">
+						<img src="/img/series/series-1/landscape-cover.png " alt="Series 1 - Cover">
+						<div class="stack-1"></div>
+						<div class="stack-2"></div>
+						<div class="stack-3"></div>
+					</div>
+					<div class="overview-title-wrapper">
 						<h1 class="series-title">Breathtaking landscapes.</h1>
 						<span class="series-meta">270318 — Canada</span>
 					</div>
@@ -75,8 +78,13 @@
 				</a>
 
 				<a href="javascript:delayLinks('/series/series-2.html')" class="series-wrapper">
-					<img src="/img/series/series-2/mist-cover.png" alt="Series 2 - Cover">
-					<div>
+					<div class="image-stack">
+						<img src="/img/series/series-2/mist-cover.png" alt="Series 2 - Cover">
+						<div class="stack-1"></div>
+						<div class="stack-2"></div>
+						<div class="stack-3"></div>
+					</div>
+					<div class="overview-title-wrapper">
 						<h1 class="series-title">Under the mist.</h1>
 						<span class="series-meta">130901 — Hamburg</span>
 					</div>
@@ -89,93 +97,12 @@
 				</a>
 
 				<a href="javascript:delayLinks('/series/series-3.html')" class="series-wrapper">
-					<img src="/img/series/series-3/street-cover.png" alt="Series 3 - Cover" class="last-cover">
-					<div class="last-cover">
-						<h1 class="series-title">Hongkong at night.</h1>
-						<span class="series-meta">220515 — Hongkong</span>
+					<div class="image-stack">
+						<img src="/img/series/series-3/street-cover.png" alt="Series 3 - Cover" class="last-cover">
+						<div class="stack-1"></div>
+						<div class="stack-2"></div>
+						<div class="stack-3"></div>
 					</div>
-					<p class="series-desc last-cover">
-						I travelled to Bangkok this year and the most fascinating thing
-						in there, for me at least, were the nights. All the little shops,
-						the lights and signs make this a wonderful place to take stunning
-						photographs in. Enjoy.
-					</p>
-				</a>
-
-				<a href="javascript:delayLinks('/series/series-1.html')" class="series-wrapper">
-					<img src="/img/series/series-1/landscape-cover.png " alt="Series 1 - Cover">
-					<div>
-						<h1 class="series-title">Breathtaking landscapes.</h1>
-						<span class="series-meta">270318 — Canada</span>
-					</div>
-					<p class="series-desc">
-						This earth is gorgeous, but I feel we sometimes tend
-						to forget that. I created this series to remind us of
-						and showcase the incredible landscapes Canada has to offer.
-						I was able to spend three weeks there during March of
-						this year. Specifiaclly, I visited Nova Scotia. Have fun.
-					</p>
-				</a>
-
-				<a href="javascript:delayLinks('/series/series-2.html')" class="series-wrapper">
-					<img src="/img/series/series-2/mist-cover.png" alt="Series 2 - Cover">
-					<div>
-						<h1 class="series-title">Under the mist.</h1>
-						<span class="series-meta">130901 — Hamburg</span>
-					</div>
-					<p class="series-desc">
-						It doesn’t happen very often, but when it does I always feel the need
-						to go out and shoot. This is a collection of misty pictures I captured
-						during the time. I don’t know about you, but I think mist has something
-						very mysterious to it and it can transforms places completely. It’s magic.
-					</p>
-				</a>
-
-				<a href="javascript:delayLinks('/series/series-3.html')" class="series-wrapper">
-					<img src="/img/series/series-3/street-cover.png" alt="Series 3 - Cover" class="last-cover">
-					<div class="last-cover">
-						<h1 class="series-title">Hongkong at night.</h1>
-						<span class="series-meta">220515 — Hongkong</span>
-					</div>
-					<p class="series-desc last-cover">
-						I travelled to Bangkok this year and the most fascinating thing
-						in there, for me at least, were the nights. All the little shops,
-						the lights and signs make this a wonderful place to take stunning
-						photographs in. Enjoy.
-					</p>
-				</a>
-
-				<a href="javascript:delayLinks('/series/series-1.html')" class="series-wrapper">
-					<img src="/img/series/series-1/landscape-cover.png " alt="Series 1 - Cover">
-					<div>
-						<h1 class="series-title">Breathtaking landscapes.</h1>
-						<span class="series-meta">270318 — Canada</span>
-					</div>
-					<p class="series-desc">
-						This earth is gorgeous, but I feel we sometimes tend
-						to forget that. I created this series to remind us of
-						and showcase the incredible landscapes Canada has to offer.
-						I was able to spend three weeks there during March of
-						this year. Specifiaclly, I visited Nova Scotia. Have fun.
-					</p>
-				</a>
-
-				<a href="javascript:delayLinks('/series/series-2.html')" class="series-wrapper">
-					<img src="/img/series/series-2/mist-cover.png" alt="Series 2 - Cover">
-					<div>
-						<h1 class="series-title">Under the mist.</h1>
-						<span class="series-meta">130901 — Hamburg</span>
-					</div>
-					<p class="series-desc">
-						It doesn’t happen very often, but when it does I always feel the need
-						to go out and shoot. This is a collection of misty pictures I captured
-						during the time. I don’t know about you, but I think mist has something
-						very mysterious to it and it can transforms places completely. It’s magic.
-					</p>
-				</a>
-
-				<a href="javascript:delayLinks('/series/series-3.html')" class="series-wrapper">
-					<img src="/img/series/series-3/street-cover.png" alt="Series 3 - Cover" class="last-cover">
 					<div class="last-cover">
 						<h1 class="series-title">Hongkong at night.</h1>
 						<span class="series-meta">220515 — Hongkong</span>

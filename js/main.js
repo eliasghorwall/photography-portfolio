@@ -143,7 +143,10 @@ document.addEventListener('turbolinks:load', function() 	{
 	}
 
 	if (aboutLink, aboutBackBtn) {
-		aboutLink.addEventListener('click', showAboutPage);
+		aboutLink.addEventListener('click', () => {
+			showAboutPage();
+			animateAboutPage();
+		});
 		aboutLink.addEventListener('mouseenter', aboutHover);
 		aboutBackBtn.addEventListener('click', hideAboutPage);
 	}
@@ -214,4 +217,59 @@ document.addEventListener('turbolinks:load', function() 	{
 			revealerToRight();
 		})
 	})
+
+	//- - - SERIES COVER IMAGE HOVER - - - //
+	seriesWrappers.forEach((wrapper) => {
+		setTimeout(function () {
+			wrapper.addEventListener('mouseenter', (event) => {
+				let targetStack = wrapper.querySelectorAll('.image-stack div');
+				let targetCover = wrapper.querySelectorAll('.image-stack img');
+
+				anime.remove(targetStack);
+
+				anime({
+					targets: targetStack.item(0),
+					opacity: [0, 0.5],
+					delay: 0,
+					scale: [0.7, 1],
+					translateY: [300, 0],
+					easing: 'easeOutExpo',
+				})
+
+				anime({
+					targets: targetStack.item(1),
+					opacity: [0, 0.2],
+					delay: 70,
+					scale: [0.7, 1],
+					translateY: [300, 0],
+					easing: 'easeOutExpo',
+				})
+
+				anime({
+					targets: targetStack.item(2),
+					opacity: [0, 0.1],
+					delay: 140,
+					scale: [0.7, 1],
+					translateY: [300, 0],
+					easing: 'easeOutExpo',
+				})
+			})
+
+			wrapper.addEventListener('mouseleave', (event) => {
+				let targetStack = wrapper.querySelectorAll('.image-stack div');
+				let targetCover = wrapper.querySelectorAll('.image-stack img');
+
+				anime.remove(targetStack);
+
+				anime({
+					targets: targetStack,
+					opacity: 0,
+					delay: (el, i) => 100 * i,
+					translateY: 30,
+					duration: 2000,
+				})
+			})
+		}, 1000);
+	})
+
 });
